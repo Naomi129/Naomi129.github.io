@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Images and Media</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 80%;
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block; /* Remove extra space below images */
+      margin-bottom: 20px; /* Spacing between images */
+    }
+    video {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Images</h1>
+    <img src="img/logo.png" alt="Description of Image">
+    <img src="path_to_another_image.jpg" alt="Description of Another Image">
+    
+    <h1>Videos</h1>
+    <video controls>
+      <source src="path_to_your_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Optionally, you can add YouTube embedded videos -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+</body>
+</html>
