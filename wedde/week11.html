@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Layout</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh; 
+    }
+    .block {
+      flex-grow: 1;
+    }
+    .top-block {
+      background-color: #757575;
+      flex-grow: 0;
+      height: 50px; 
+    }
+    .second-block {
+      background-color: #546e7a; 
+      flex-grow: 0;
+      height: 100px; 
+    }
+    .middle-blocks {
+      display: flex; 
+      flex-grow: 0;
+      height: calc(100vh - 150px); 
+    }
+    .block-blue {
+      background-color: #263238; 
+      flex:
+
+            flex: 2;
+    }
+    .block-purple {
+      background-color: #800080; 
+      flex: 3; 
+    }
+    .bottom-block {
+      background-color: #b71c1c;
+      flex-grow: 0;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="block top-block"></div>
+  <div class="block second-block"></div>
+  <div class="middle-blocks">
+    <div class="block block-blue"></div>
+    <div class="block block-purple"></div>
+  </div>
+  <div class="block bottom-block"></div>
+
+</body>
+</html>
+
