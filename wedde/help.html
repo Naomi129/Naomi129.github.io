@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get Help - Our Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .header-icons a {
+  color: inherit; /* 继承默认颜色 */
+  text-decoration: none; /* 去掉下划线 */
+}
+
+.header-icons a:hover i {
+  color: #333; /* 鼠标悬停时的颜色 */
+  transition: color 0.3s; /* 平滑过渡效果 */
+}
+
+    body {
+      font-family: "Merriweather", serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* 居中网格 */
+      max-width: 1200px; /* 最大宽度与头部和页脚一致 */
+      margin: 20px auto; /* 上下外边距20px，左右自动 */
+    }
+
+    .gallery-item {
+      width: calc(33.333% - 20px); /* 三分之一宽度减去间隙 */
+      margin: 10px; /* 项之间的间隙 */
+      text-align: center; /* 文本居中 */
+    }
+
+    .gallery-image img {
+      width: 100%; /* 图片宽度100% */
+      height: auto; /* 图片高度自动 */
+    }
+
+    .gallery-description {
+      margin-top: 8px; /* 描述与图片间隔 */
+      font-size: 1em; /* 字体大小 */
+    }
+
+   .gallery-description a,
+.gallery-description a:visited,
+.gallery-item a,
+.gallery-item a:visited { /* 更具体的选择器，确保覆盖默认样式 */
+  color: black !important; /* 确保文本颜色为黑色，使用!important确保覆盖 */
+  text-decoration: none !important; /* 去除下划线，使用!important确保覆盖 */
+}
+
+.gallery-description a:hover,
+.gallery-item a:hover {
+  color: #333 !important; /* 鼠标悬停时的颜色变更为深灰色 */
+  transition: color 0.3s; /* 添加颜色变化的平滑过渡效果 */
+}
+
+
+    .price {
+      display: block; /* 让价格单独一行 */
+      font-weight: bold;
+      margin-top: 4px; /* 价格与描述之间的间距 */
+    }
+
+    .logo-home {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-grow: 1;
+    }
+
+    .logo-home img {
+      width: 150px;
+      height: auto;
+      transition: opacity 0.3s;
+    }
+
+    .logo-home:hover img {
+      opacity: 0.7;
+    }
+
+    .header-promo p {
+      font-size: 0.9em;
+      text-align: center;
+      margin: 0;
+    }
+
+    .header-icons {
+      font-size: 1.5em;
+      display: flex;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+
+    .header-icons i {
+  color: black; /* 使图标变成黑色 */
+   margin-right: 15px; /* 每个图标的右边距 */
+  cursor: pointer;
+}
+
+.header-icons i:hover {
+  color: darkgray; /* 悬停时的颜色 */
+}
+
+    @media (max-width: 768px) {
+      .header-top {
+        flex-wrap: wrap;
+      }
+      .header-promo {
+        flex-basis: 100%;
+        order: 1;
+        padding: 10px 0;
+      }
+      .header-icons {
+        order: 2;
+      }
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+    }
+
+    .gallery-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gallery-image {
+      margin: 10px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery-link {
+      margin: 10px;
+      text-decoration: none;
+      color: black;
+      font-size: 1.5em;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      width: 100%;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .social-icons {
+      font-size: 24px; /* 调整图标大小 */
+    }
+
+    .social-icons a {
+      color: white; /* 设置图标颜色 */
+      margin-right: 10px; /* 设置图标间距 */
+      text-decoration: none; /* 去除链接下划线 */
+    }
+
+    /* 在小屏幕设备上堆叠图标而不是水平排列 */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-icons {
+        margin-bottom: 20px;
+      }
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: auto;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-title {
+      font-size: 2em;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .faq-section {
+      margin-bottom: 20px; /* 下方间距 */
+    }
+
+    .faq-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .faq-item {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd; /* 底部边框 */
+    }
+
+    .contact-section {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .contact-method {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .contact-info {
+      padding-left: 10px; /* 缩进 */
+    }
+
+    .chat-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .chat-button {
+      padding: 10px 20px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .chat-button:hover {
+      background-color: #444;
+    }
+
+    .community-section {
+      text-align: left;
+    }
+
+    .community-link {
+      text-decoration: none;
+      color: #555;
+      border-bottom: 1px solid #555;
+      transition: color 0.3s;
+    }
+
+    .community-link:hover {
+      color: #333;
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-top">
+    <a href="Homepage.html" class="logo-home">
+      <img src="img/logo.png" alt="Slide.ly Home" class="logo">
+    </a>
+    <div class="header-promo">
+      <p>Members: Free Shipping on Orders $50+ Sign Up</p>
+      <p>Save Up to 40% Shop All Our New Markdowns</p>
+    </div>
+      <div class="header-icons">
+    <a href="search.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+    <a href="Bag.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+    <a href="user.html"><i class="fa fa-user" aria-hidden="true"></i></a>
+  </div>
+</div>
+  <div class="container">
+    <h1 class="page-title">Get Help</h1> <!-- 页面标题 -->
+
+    <!-- 常见问题部分 -->
+    <div class="faq-section">
+      <h2 class="faq-title">Frequently Asked Questions (FAQs)</h2>
+      <div class="faq-item">
+        <strong>How do I track my order?</strong> 
+        <p>Use our "Order Status" page to track your order. Enter your order number to get the latest information.</p>
+      </div>
+      <div class="faq-item">
+        <strong>What is your return policy?</strong> 
+        <p>You can return items within 30 days of purchase. Visit our "Returns" page for more details.</p>
+      </div>
+      <div class="faq-item">
+        <strong>How do I contact customer support?</strong> 
+        <p>Contact us via phone or email for support. Details are provided below.</p>
+      </div>
+    </div>
+
+    <!-- 联系支持部分 -->
+    <div class="contact-section">
+      <h2 class="contact-method">Contact Support</h2>
+      <div class="contact-info">
+        <p><strong>Phone:</strong> 1-800-123-4567</p>
+        <p><strong>Email:</strong> support@ourshop.com</p>
+        <p><strong>Business Hours:</strong> Mon-Fri, 9 AM - 6 PM</p>
+      </div>
+    </div>
+
+    <!-- 在线聊天部分 -->
+    <div class="chat-section">
+      <h2 class="contact-method">Live Chat</h2>
+      <button class="chat-button">Start Chat</button> <!-- 聊天按钮 -->
+    </div>
+
+    <!-- 社区支持部分 -->
+    <div class="community-section">
+      <h2 class="contact-method">Community Support</h2>
+      <p>Join our community to get help from other users and our support team.</p>
+      <a href="community.html" class="community-link">Visit Our Community</a> <!-- 社区链接 -->
+    </div>
+  </div>
+
+  <!-- 页脚部分 -->
+<footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>RESOURCES</h3>
+        <ul>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Find A Store</a></li>
+          <li><a href="#">Nike Slides Journal</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>HELP</h3>
+        <ul>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Order Status</a></li>
+          <li><a href="#">Shipping And Delivery</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>PROMOTIONS</h3>
+        <ul>
+          <li><a href="#">Student</a></li>
+          <li><a href="#">Military</a></li>
+          <li><a href="#">Teacher</a></li>
+          <li><a href="#">Birthday</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>FOLLOW US</h3>
+        <!-- Social icons here -->
+         <div class="footer-container">
+      <div class="social-icons">
+        <!-- 添加YouTube图标链接 -->
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <!-- 添加TikTok图标链接 -->
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <!-- 添加Pinterest图标链接 -->
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+        <!-- 添加Twitter图标链接 -->
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <!-- 添加Instagram图标链接 -->
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <!-- 添加Facebook图标链接 -->
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

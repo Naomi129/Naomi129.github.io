@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>slidely</title>
+  <title>我的网站</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -12,12 +12,12 @@
 
 
   <style>
-     .search-button {
+
+    .search-button {
       position: relative;
       margin-right: 15px;
       cursor: pointer;
     }
-
     .search-button .fa-search {
       transition: color 0.3s;
     }
@@ -25,8 +25,7 @@
     .search-button:hover .fa-search {
       color: #333; /* 悬停时的颜色 */
     }
-
-    .search-input {
+     .search-input {
       display: none;
       position: absolute;
       top: 50%; /* 垂直居中 */
@@ -43,16 +42,16 @@
       display: block; /* 悬停时显示搜索框 */
     }
 
-
     .header-icons a {
   color: inherit; /* 继承默认颜色 */
   text-decoration: none; /* 去掉下划线 */
 }
 
-.header-icons a:hover i {
-  color: #333; /* 鼠标悬停时的颜色 */
-  transition: color 0.3s; /* 平滑过渡效果 */
-}
+.header-icons {
+      display: flex;
+      align-items: center;
+    }
+
 
 
     .header-icons a:visited {
@@ -60,15 +59,15 @@
 }
 
     .header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px; /* Adjust padding as needed */
-  background-color: #fff; /* Adjust background color as needed */
-  max-width: 1200px; /* 假设下方图片的宽度为 1200px */
-  width: 100%; /* 确保头部不超出视口宽度 */
-  margin: 0 auto; 
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
 
 .logo {
   width: 150px; /* Adjust logo size as needed */
@@ -82,17 +81,14 @@
 }
 
 .header-icons {
-    display: flex; /* 使用 Flexbox 布局 */
-    justify-content: flex-start; /* 图标向左对齐 */
-    align-items: center; /* 垂直居中 */
-    font-size: 1.5em; /* 图标大小 */
-    width: 100px; /* 减小父容器宽度 */
-  }
+  font-size: 1.5em; /* Adjust icon size as needed */
+}
 
-  .header-icons i {
-    margin-right: 5px; /* 缩小图标之间的间距 */
-    cursor: pointer;
-  }
+.header-icons i {
+  margin-right: 15px; /* Spacing between icons */
+  cursor: pointer; /* Changes the cursor to pointer on hover */
+}
+
 /* Add this if you want to wrap the header content on smaller screens */
 @media (max-width: 768px) {
   .header-top {
@@ -108,21 +104,14 @@
   }
 }
 
-    body {
+  body {
       font-family: 'Merriweather', serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-    font-family: "Merriweather", serif; /* This sets the default font for the entire website */
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background-color: #f5f5f5;
+      width: 100%;
     }
+
     .merriweather-light {
       font-family: "Merriweather", serif;
       font-weight: 300;
@@ -238,96 +227,77 @@
 
 <body>
 
-  <div class="header-top">
-  <a href="Homepage.html" class="logo-home">
-    <img src="img/logo.png" alt="Slide.ly Home" class="logo">
-  </a>
+    <div class="header-top">
+   <a href="Homepage.html" class="logo-home">
+      <img src="img/logo.png" alt="Slide.ly Home" class="logo">
+    </a>
   <div class="header-promo">
     <p>Members: Free Shipping on Orders $50+ Sign Up</p>
     <p>Save Up to 40% Shop All Our New Markdowns</p>
   </div>
-  <div class="header-icons" style="width: 100px;"> <!-- 减小父容器宽度 -->
-    <div class="search-button" style="text-align: center; flex-grow: 1;"> <!-- 设置居中 -->
-      <i class="fa fa-search" aria-hidden="true"></i>
-      <input type="text" class="search-input" placeholder="Search..."> <!-- 搜索框 -->
-    </div>
-  <a href="Bag.html" style="text-align: center; flex-grow: 1; margin-left: 6px;"> <!-- 购物袋图标向左偏移 -->
-  <i class="fa fa-shopping-bag" aria-hidden="true"></i> <!-- 购物袋图标 -->
-</a>
-    <a href="user.html" style="text-align: center; flex-grow: 1; margin-left: 15px;"> <!-- 保持居中 -->
-      <i class="fa fa-user" aria-hidden="true"></i> <!-- 用户图标 -->
-    </a>
+  <div class="header-icons">
+     <div class="search-button">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="text" class="search-input" placeholder="Search..."> <!-- 搜索输入框 -->
+      </div>
+    <a href="Bag.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+    <a href="user.html"><i class="fa fa-user" aria-hidden="true"></i></a>
   </div>
 </div>
       
 
-     <img src="img/home.png" style="margin-bottom: 30px;"> <!-- 增加外边距 -->
+      <img src="img/home.png">
 
-<div class="gallery" style="display: flex; flex-direction: column; gap: 10px;"> <!-- 外层容器 -->
-  
-  
-  <!-- 第一排 -->
-  <div class="gallery" style="display: flex; flex-direction: column; gap: 10px;"> <!-- 减小 gap 的值 -->
+      
 
-  <!-- 第一排 -->
-  <div class="gallery-row" style="display: flex; justify-content: space-evenly;"> <!-- 第一排 -->
-    <div class="gallery-column" style="text-align: center;"> <!-- 第一个产品 -->
-      <img src="img/in4.png" alt="Indoor Slippers" class="gallery-image" style="width: 400px; height: 300px;">
-      <a href="pg2.html" class="gallery-link" style="font-weight: 900;">INDOOR</a>
+  <div class="gallery">
+    <div class="gallery-column">
+      <img src="img/in1.png" alt="Indoor Slippers" class="gallery-image">
+      <a href="pg2.html" class="gallery-link">INDOOR</a>
+      <img src="img/re1.png" alt="Recovery Slippers" class="gallery-image">
+      <a href="re.html" class="gallery-link">RECOVERY</a>
     </div>
-    <div class="gallery-column" style="text-align: center;"> <!-- 第二个产品 -->
-      <img src="img/re1.png" alt="Recovery Slippers" class="gallery-image" style="width: 400px; height: 300px;">
-      <a href="repag.html" class="gallery-link" style="font-weight: 900;">RECOVERY</a>
-    </div>
-  </div>
+    <div class="gallery-column">
+      <img src="img/ou1.png" alt="Outdoor Slippers" class="gallery-image">
+      <a href="outdoor.html" class="gallery-link">OUTDOOR</a>
+      <img src="img/f1.png" alt="Fashion Slippers" class="gallery-image">
+      <a href="fas.html" class="gallery-link">FASHION</a>
+      <img src="img/c1.png" alt="COMFORT Slippers" class="gallery-image">
 
-  <!-- 第二排 -->
-  <div class="gallery-row" style="display: flex; justify-content: space-evenly;"> <!-- 第二排 -->
-    <div class="gallery-column" style="text-align: center;"> <!-- 第三个产品 -->
-      <img src="img/ou1.png" alt="Outdoor Slippers" class="gallery-image" style="width: 300px; height: 300px;">
-      <a href="outdoor.html" class="gallery-link" style="font-weight: 900;">OUTDOOR</a>
-    </div>
-    <div class="gallery-column" style="text-align: center;"> <!-- 第四个产品 -->
-      <img src="img/f1.png" alt="Fashion Slippers" class="gallery-image" style="width: 300px; height: 300px;">
-      <a href="fas.html" class="gallery-link" style="font-weight: 900;">FASHION</a>
-    </div>
-    <div class="gallery-column" style="text-align: center;"> <!-- 第五个产品 -->
-      <img src="img/c1.png" alt="Comfort Slippers" class="gallery-image" style="width: 300px; height: 300px;">
-      <a href="com.html" class="gallery-link" style="font-weight: 900;">COMFORT</a>
+      <a href="com.html" class="gallery-link">COMFORT</a> 
+
+
     </div>
   </div>
-
-</div>
-
-  
+  <a href="https://www.lifewire.com/404-not-found-error-explained-2622936" class="merriweather-light">404 Media</a>
 
   <footer>
   <div class="footer-container">
     <div class="footer-column">
       <h3>RESOURCES</h3>
       <ul>
-        <li><a href="gift.html">Gift Cards</a></li>
-        <li><a href="find.html">Find A Store</a></li>
-        <li><a href="journal.html">Nike Slides Journal</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Find A Store</a></li>
+        <li><a href="#">Nike Slides Journal</a></li>
       </ul>
     </div>
     <div class="footer-column">
       <h3>HELP</h3>
       <ul>
-        <li><a href="help.html">Get Help</a></li>
-        <li><a href="order.html">Order Status</a></li>
-        <li><a href="shipping.html">Shipping And Delivery</a></li>
-        <li><a href="returns.html">Returns</a></li>
-        <li><a href="payment.html">Payment Options</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="#">Get Help</a></li>
+        <li><a href="#">Order Status</a></li>
+        <li><a href="#">Shipping And Delivery</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Payment Options</a></li>
+        <li><a href="#">Contact Us</a></li>
       </ul>
     </div>
     <div class="footer-column">
       <h3>PROMOTIONS</h3>
       <ul>
-        <li><a href="student.html">Student</a></li>
-        <li><a href="military.html">Military</a></li>
-        <li><a href="teacher.html">Teacher</a></li>
+        <li><a href="#">Student</a></li>
+        <li><a href="#">Military</a></li>
+        <li><a href="#">Teacher</a></li>
         <li><a href="#">Birthday</a></li>
       </ul>
     </div>

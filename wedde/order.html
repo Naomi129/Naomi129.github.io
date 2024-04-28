@@ -2,80 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Website</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <title>Order Status - Our Shop</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   <style>
-
-    .filter-container {
-  position: fixed; /* 保证位置固定 */
-  bottom: 80px; /* 从页面底部上移80px */
-  right: 20px; /* 从页面右侧20px */
-  padding: 10px; /* 内边距 */
-  background-color: #555; /* 与 "Load More" 按钮保持一致 */
-  border-radius: 5px; /* 边角圆弧度 */
-  color: white; /* 按钮文本颜色 */
-  text-decoration: none; /* 去除下划线 */
-  cursor: pointer; /* 鼠标悬停时显示手形光标 */
-  transition: background-color 0.3s; /* 添加平滑过渡效果 */
-}
-
-.filter-title {
-  text-align: center; /* 文本居中 */
-}
-
-.filter-container:hover {
-  background-color: #444; /* 鼠标悬停时改变背景颜色 */
-}
-
-
-
-    .filter-icon {
-      margin-right: 10px;
-    }
-
-    .collapsible-content {
-      display: none; /* 默认隐藏 */
-      margin-top: 10px;
-    }
-
-    .collapsible-content ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .collapsible-content ul li {
-      padding: 5px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .collapsible-content ul li:last-child {
-      border-bottom: none; /* 最后一项没有底部边框 */
-    }
-
-    /* Load More 按钮 */
-    .load-more-button {
-      position: fixed; /* 固定在页面 */
-      bottom: 20px; /* 离底部20px */
-      right: 20px; /* 离右边20px */
-      padding: 10px 20px;
-      background-color: #555;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-
-    .load-more-button:hover {
-      background-color: #444; /* 悬停时背景颜色 */
-    }
-    。。。。。。。
-
     .header-icons a {
   color: inherit; /* 继承默认颜色 */
   text-decoration: none; /* 去掉下划线 */
@@ -93,19 +23,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #fff;
     }
 
-  .header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #fff !important; /* 强制应用背景颜色 */
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
     .gallery {
       display: flex;
@@ -332,23 +261,92 @@
   background-color: #444; /* 鼠标悬停时的背景色 */
 }
 
-   
-
-  </style>
-  <script>
-    // JavaScript 控制折叠和展开
-    function toggleCollapsible(id) {
-      var content = document.getElementById(id);
-      if (content.style.display === "block") {
-        content.style.display = "none"; // 折叠
-      } else {
-        content.style.display = "block"; // 展开
-      }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
     }
-  </script>
+
+    .page-title {
+      font-size: 2em;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .order-tracking {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .order-input {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .track-button {
+      padding: 10px 20px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .track-button:hover {
+      background-color: #444; /* 鼠标悬停时背景色 */
+    }
+
+    .order-details {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .order-details h2 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .order-details p {
+      margin: 5px 0; /* 上下间距 */
+    }
+
+    .order-history {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .order-history h2 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .order-history ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .order-history li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd; /* 底部边框 */
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px; /* 页脚内边距 */
+    }
+  </style>
 </head>
 <body>
-
   <div class="header-top">
     <a href="Homepage.html" class="logo-home">
       <img src="img/logo.png" alt="Slide.ly Home" class="logo">
@@ -363,139 +361,39 @@
     <a href="user.html"><i class="fa fa-user" aria-hidden="true"></i></a>
   </div>
 </div>
+  <div class="container">
+    <h1 class="page-title">Order Status</h1>
 
-<div class="filter-container">
-  <!-- 标题和过滤器图标 -->
-  <div class="filter-title" onclick="toggleCollapsible('filter-content')">
-    <span><i class="fa fa-filter filter-icon" aria-hidden="true"></i> Filter Options</span>
-    <span>&#9660;</span> <!-- 下箭头 -->
+    <!-- 订单跟踪部分 -->
+    <div class="order-tracking">
+      <p>Enter your order number to track your order status:</p> <!-- 指示语 -->
+      <input type="text" class="order-input" placeholder="Enter your order number"> <!-- 订单输入框 -->
+      <button class="track-button">Track Order</button> <!-- 追踪按钮 -->
+    </div>
+
+    <!-- 订单详情部分 -->
+    <div class="order-details">
+      <h2>Order Details</h2> <!-- 订单详情标题 -->
+      <p><strong>Order Number:</strong> 12345</p> <!-- 订单号 -->
+      <p><strong>Status:</strong> Shipped</p> <!-- 订单状态 -->
+      <p><strong>Estimated Delivery:</strong> April 28, 2024</p> <!-- 预计送达时间 -->
+      <p><strong>Shipping Carrier:</strong> UPS</p> <!-- 物流公司 -->
+      <p><strong>Tracking Number:</strong> 1Z12345X99999</p> <!-- 物流跟踪号 -->
+    </div>
+
+    <!-- 订单历史部分 -->
+    <div class="order-history">
+      <h2>Order History</h2> <!-- 历史订单标题 -->
+      <ul> <!-- 历史订单列表 -->
+        <li>Order #12344 - Delivered on April 20, 2024</li>
+        <li>Order #12343 - Delivered on April 18, 2024</li>
+        <li>Order #12342 - Canceled</li>
+      </ul>
+    </div>
+
   </div>
 
-  <!-- 可折叠过滤器内容 -->
-  <div class="collapsible-content" id="filter-content">
-    <ul>
-      <li>Collection</li>
-      <li>Size</li>
-      <li>Board Bend</li>
-      <li>Board Shape</li>
-      <li>Board Terrain</li>
-      <li>Board Skill Level</li>
-      <li>Gender</li>
-      <li>Reviews</li>
-      <li>Tech & Features</li>
-    </ul>
-  </div>
-</div>
-
-<!-- 悬浮的 Load More 按钮 -->
-<a class="load-more-button">Load More</a>
-    
-
-
-    <h1> INDOOR </h1>
-
-   <div class="gallery">
-    <!-- 每个gallery-item是一个图像加描述 -->
-    <!-- 商品项1 -->
-  <div class="gallery-item">
-  <img src="img/t1.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
-</div>
-
-
-    <div class="gallery-item">
-  <img src="img/in2.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-
-  <div class="gallery-item">
-  <img src="img/in3.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Leather High-Heeled Slippers<span class="price">$27</span></a>
-</div>
-    <div class="gallery-item">
-  <img src="img/in4.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-<div class="gallery-item">
-  <img src="img/in5.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Versatile Stiletto Slippers<span class="price">$32</span></a>
-</div>
-<div class="gallery-item">
-  <img src="img/in6.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Summer Shark Slippers<span class="price">$30</span></a>
-</div>
-
-    <!-- 重复gallery-item结构来添加更多产品 -->
-  </div>
-  <!-- Body 部分末尾 -->
-<a href="page2.html" class="load-more-button">Load More</a> <!-- 翻页按钮，链接到下一页 -->
-<!-- 隐藏的部分 -->
-<div id="hidden-content-1" style="display: none;">
-  
-    <div class="gallery">
-    <!-- 每个gallery-item是一个图像加描述 -->
-    <!-- 商品项1 -->
-  <div class="gallery-item">
-  <img src="img/in7.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
-</div>
-
-
-    <div class="gallery-item">
-  <img src="img/in8.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-
-  <div class="gallery-item">
-  <img src="img/in9.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Leather High-Heeled Slippers<span class="price">$27</span></a>
-</div>
-</div>
-  </div>
-
-  <div id="hidden-content-2" style="display: none;">
-    <div class="gallery">
-    <!-- 每个gallery-item是一个图像加描述 -->
-    <!-- 商品项1 -->
-  <div class="gallery-item">
-  <img src="img/in10.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
-</div>
-
-
-    <div class="gallery-item">
-  <img src="img/in11.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-
-<div class="gallery-item">
-  <img src="img/c2.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
-</div>
-
-
-</div>
-  </div>
-
-<!-- Load More 按钮 -->
-<a id="load-more-button" class="load-more-button">Load More</a>
-
- 
-      </body>
-
-
-  <!-- 页面的主体内容 -->
-
-  <!-- 假设这里有更多的内容 -->
-
+  <!-- 页脚部分 -->
   <footer>
     <div class="footer-container">
       <div class="footer-column">
@@ -547,24 +445,5 @@
       </div>
     </div>
   </footer>
-  <script>
-    // 当前显示的隐藏部分计数器
-    var currentHiddenContent = 0;
-
-    document.getElementById("load-more-button").addEventListener("click", function () {
-      currentHiddenContent++; // 增加计数器
-      
-      if (currentHiddenContent === 1) {
-        document.getElementById("hidden-content-1").style.display = "block"; // 显示第一排
-      } else if (currentHiddenContent === 2) {
-        document.getElementById("hidden-content-2").style.display = "block"; // 显示第二排
-      } else {
-        // 超过两排后隐藏所有，并重置计数器
-        document.getElementById("hidden-content-1").style.display = "none";
-        document.getElementById("hidden-content-2").style.display = "none";
-        currentHiddenContent = 0; // 重置计数器
-      }
-    });
-  </script>
 </body>
 </html>

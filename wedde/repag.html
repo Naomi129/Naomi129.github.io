@@ -9,7 +9,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <style>
 
-    .filter-container {
+ 
+    。。。。。。。。
+
+    .header-icons a {
+  color: inherit; /* 继承默认颜色 */
+  text-decoration: none; /* 去掉下划线 */
+}
+
+.header-icons a:hover i {
+  color: #333; /* 鼠标悬停时的颜色 */
+  transition: color 0.3s; /* 平滑过渡效果 */
+}
+
+
+   .filter-container {
   position: fixed; /* 保证位置固定 */
   bottom: 80px; /* 从页面底部上移80px */
   right: 20px; /* 从页面右侧20px */
@@ -74,17 +88,7 @@
     .load-more-button:hover {
       background-color: #444; /* 悬停时背景颜色 */
     }
-    。。。。。。。
 
-    .header-icons a {
-  color: inherit; /* 继承默认颜色 */
-  text-decoration: none; /* 去掉下划线 */
-}
-
-.header-icons a:hover i {
-  color: #333; /* 鼠标悬停时的颜色 */
-  transition: color 0.3s; /* 平滑过渡效果 */
-}
 
     body {
       font-family: "Merriweather", serif;
@@ -93,19 +97,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #fff;
     }
 
-  .header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #fff !important; /* 强制应用背景颜色 */
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
     .gallery {
       display: flex;
@@ -335,7 +338,7 @@
    
 
   </style>
-  <script>
+   <script>
     // JavaScript 控制折叠和展开
     function toggleCollapsible(id) {
       var content = document.getElementById(id);
@@ -348,7 +351,6 @@
   </script>
 </head>
 <body>
-
   <div class="header-top">
     <a href="Homepage.html" class="logo-home">
       <img src="img/logo.png" alt="Slide.ly Home" class="logo">
@@ -364,7 +366,7 @@
   </div>
 </div>
 
-<div class="filter-container">
+  <div class="filter-container">
   <!-- 标题和过滤器图标 -->
   <div class="filter-title" onclick="toggleCollapsible('filter-content')">
     <span><i class="fa fa-filter filter-icon" aria-hidden="true"></i> Filter Options</span>
@@ -389,97 +391,45 @@
 
 <!-- 悬浮的 Load More 按钮 -->
 <a class="load-more-button">Load More</a>
+
     
 
 
-    <h1> INDOOR </h1>
+    <h1> RECOVERY </h1>
 
-   <div class="gallery">
-    <!-- 每个gallery-item是一个图像加描述 -->
-    <!-- 商品项1 -->
-  <div class="gallery-item">
-  <img src="img/t1.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
-</div>
-
-
-    <div class="gallery-item">
-  <img src="img/in2.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-
-  <div class="gallery-item">
-  <img src="img/in3.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Leather High-Heeled Slippers<span class="price">$27</span></a>
-</div>
-    <div class="gallery-item">
-  <img src="img/in4.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-<div class="gallery-item">
-  <img src="img/in5.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Versatile Stiletto Slippers<span class="price">$32</span></a>
-</div>
-<div class="gallery-item">
-  <img src="img/in6.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Summer Shark Slippers<span class="price">$30</span></a>
-</div>
-
-    <!-- 重复gallery-item结构来添加更多产品 -->
-  </div>
-  <!-- Body 部分末尾 -->
-<a href="page2.html" class="load-more-button">Load More</a> <!-- 翻页按钮，链接到下一页 -->
-<!-- 隐藏的部分 -->
-<div id="hidden-content-1" style="display: none;">
+   <div class="gallery" style="display: flex; flex-wrap: wrap; justify-content: flex-start;"> <!-- 设置靠左对齐 -->
   
-    <div class="gallery">
-    <!-- 每个gallery-item是一个图像加描述 -->
-    <!-- 商品项1 -->
-  <div class="gallery-item">
-  <img src="img/in7.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
-</div>
-
-
-    <div class="gallery-item">
-  <img src="img/in8.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-
-  <div class="gallery-item">
-  <img src="img/in9.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Leather High-Heeled Slippers<span class="price">$27</span></a>
-</div>
-</div>
+  <!-- 第一排 -->
+  <div class="gallery-item" style="text-align: center;"> <!-- 中心对齐 -->
+    <img src="img/re1.png" style="width: 300px; height: 300px" class="gallery-image">
+    <a href="pg3.html" class="gallery-description">
+      Fashion Women's Slippers<span class="price">$15</span>
+    </a>
   </div>
 
-  <div id="hidden-content-2" style="display: none;">
-    <div class="gallery">
-    <!-- 每个gallery-item是一个图像加描述 -->
-    <!-- 商品项1 -->
-  <div class="gallery-item">
-  <img src="img/in10.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
+  <div class="gallery-item" style="text-align: center;"> <!-- 第二个商品保持中间 -->
+    <img src="img/re2.png" style="width: 300px;height: 300px" class="gallery-image">
+    <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
+  </div>
+
+  <div class="gallery-item" style="text-align: center;"> <!-- 第三个商品保持中间 -->
+    <img src="img/re3.png" style="width: 300px;height: 300px" class="gallery-image">
+    <a href="link-to-product-detail-page.html" class="gallery-description">Leather High-Heeled Slippers<span class="price">$27</span></a>
+  </div>
+
+  <!-- 第二排 -->
+  <div class="gallery-item" style="text-align: left;"> <!-- 第二排的第一个图片靠左对齐 -->
+    <img src="img/re4.png" style="width: 300px;height: 300px" class="gallery-image">
+    <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
+  </div>
+
+  <div class="gallery-item" style="text-align: left;"> <!-- 让第二排的第二个图片也靠左对齐 -->
+    <img src="img/ou3.png" style="width: 300px;height: 300px" class="gallery-image">
+    <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
+  </div>
+
 </div>
 
-
-    <div class="gallery-item">
-  <img src="img/in11.png" style="width: 300px;height: 300px" class="gallery-image">
-  <a href="link-to-product-detail-page.html" class="gallery-description">Handwoven Beach Slippers<span class="price">$30</span></a>
-</div>
-
-<div class="gallery-item">
-  <img src="img/c2.png" style="width: 300px; height: 300px" class="gallery-image">
-  <a href="pg3.html" class="gallery-description">
-    Fashion Women's Slippers<span class="price">$15</span>
-  </a>
-</div>
 
 
 </div>

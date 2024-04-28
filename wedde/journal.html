@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <style>
+
+    .header-icons a {
+  color: inherit; /* 继承默认颜色 */
+  text-decoration: none; /* 去掉下划线 */
+}
+
+.header-icons a:hover i {
+  color: #333; /* 鼠标悬停时的颜色 */
+  transition: color 0.3s; /* 平滑过渡效果 */
+}
+
+   body {
+      font-family: "Merriweather", serif;
+      margin: 20px;
+      padding: 20px;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* 居中网格 */
+      max-width: 1200px; /* 最大宽度与头部和页脚一致 */
+      margin: 20px auto; /* 上下外边距20px，左右自动 */
+    }
+
+    .gallery-item {
+      width: calc(33.333% - 20px); /* 三分之一宽度减去间隙 */
+      margin: 10px; /* 项之间的间隙 */
+      text-align: center; /* 文本居中 */
+    }
+
+    .gallery-image img {
+      width: 100%; /* 图片宽度100% */
+      height: auto; /* 图片高度自动 */
+    }
+
+    .gallery-description {
+      margin-top: 8px; /* 描述与图片间隔 */
+      font-size: 1em; /* 字体大小 */
+    }
+
+   .gallery-description a,
+.gallery-description a:visited,
+.gallery-item a,
+.gallery-item a:visited { /* 更具体的选择器，确保覆盖默认样式 */
+  color: black !important; /* 确保文本颜色为黑色，使用!important确保覆盖 */
+  text-decoration: none !important; /* 去除下划线，使用!important确保覆盖 */
+}
+
+.gallery-description a:hover,
+.gallery-item a:hover {
+  color: #333 !important; /* 鼠标悬停时的颜色变更为深灰色 */
+  transition: color 0.3s; /* 添加颜色变化的平滑过渡效果 */
+}
+
+
+    .price {
+      display: block; /* 让价格单独一行 */
+      font-weight: bold;
+      margin-top: 4px; /* 价格与描述之间的间距 */
+    }
+
+    .logo-home {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-grow: 1;
+    }
+
+    .logo-home img {
+      width: 150px;
+      height: auto;
+      transition: opacity 0.3s;
+    }
+
+    .logo-home:hover img {
+      opacity: 0.7;
+    }
+
+    .header-promo p {
+      font-size: 0.9em;
+      text-align: center;
+      margin: 0;
+    }
+
+    .header-icons {
+      font-size: 1.5em;
+      display: flex;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+
+    .header-icons i {
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .header-top {
+        flex-wrap: wrap;
+      }
+      .header-promo {
+        flex-basis: 100%;
+        order: 1;
+        padding: 10px 0;
+      }
+      .header-icons {
+        order: 2;
+      }
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+    }
+
+    .gallery-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gallery-image {
+      margin: 10px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery-link {
+      margin: 10px;
+      text-decoration: none;
+      color: black;
+      font-size: 1.5em;
+    }
+
+     footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      width: 100%;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .social-icons {
+      font-size: 24px; /* 调整图标大小 */
+    }
+
+    .social-icons a {
+      color: white; /* 设置图标颜色 */
+      margin-right: 10px; /* 设置图标间距 */
+      text-decoration: none; /* 去除链接下划线 */
+    }
+
+    /* 在小屏幕设备上堆叠图标而不是水平排列 */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-icons {
+        margin-bottom: 20px;
+      }
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="header-top">
+    <a href="Homepage.html" class="logo-home">
+      <img src="img/logo.png" alt="Slide.ly Home" class="logo">
+    </a>
+    <div class="header-promo">
+      <p>Members: Free Shipping on Orders $50+ Sign Up</p>
+      <p>Save Up to 40% Shop All Our New Markdowns</p>
+    </div>
+      <div class="header-icons">
+    <a href="search.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+    <a href="Bag.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+    <a href="user.html"><i class="fa fa-user" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<div class="gallery" style="display: flex; width: 800px; flex-direction: column; gap: 10px;"> <!-- 外层容器 -->
+
+  <h1>Slidely Brand Journal</h1> <!-- 一级标题 -->
+  <p><strong>April 25, 2024</strong></p> <!-- 加粗日期 -->
+
+  <h2>Introduction to Slidely</h2> <!-- 二级标题 -->
+  <p>Welcome to the Slidely brand journal. Slidely is an innovative tech brand dedicated to revolutionizing the way we interact with digital content. Our mission is to create seamless, user-friendly solutions that bring joy and efficiency to people's lives. At Slidely, we believe that technology should empower creativity, enhance communication, and foster meaningful connections.</p>
+
+  <h2>Our Vision</h2> <!-- 二级标题 -->
+  <p>Our vision at Slidely is to be the leading platform for dynamic content creation and sharing. We envision a world where everyone can express themselves through interactive, engaging digital experiences. Whether you're an individual looking to tell a story or a business aiming to captivate an audience, Slidely is here to help you make a lasting impact.</p>
+
+  <h2>Core Values</h2> <!-- 二级标题 -->
+  <p>At the heart of Slidely are our core values:</p>
+  <ul> <!-- 无序列表 -->
+    <li><strong>Innovation</strong>: We constantly push the boundaries of technology, seeking new and creative ways to solve problems and enhance user experiences.</li>
+    <li><strong>Simplicity</strong>: We believe in keeping things simple, intuitive, and accessible to everyone. Our products are designed with the user in mind, ensuring a seamless and enjoyable experience.</li>
+    <li><strong>Community</strong>: We value the power of community and collaboration. Slidely is a platform that brings people together, fostering a sense of belonging and shared creativity.</li>
+    <li><strong>Integrity</strong>: We conduct our business with honesty and transparency. Our customers' trust is our most valuable asset, and we work diligently to earn and maintain it.</li>
+  </ul>
+
+  <h2>Our Products</h2> <!-- 二级标题 -->
+  <p>Slidely offers a range of products designed to meet the diverse needs of our users:</p>
+  <ul>
+    <li><strong>Slidely Studio</strong>: A powerful yet user-friendly content creation tool that allows users to create stunning slideshows, presentations, and interactive media. With a vast library of templates and assets, Slidely Studio makes it easy to bring your ideas to life.</li>
+    <li><strong>Slidely Share</strong>: A platform for sharing and discovering content. Users can upload their creations, connect with others, and explore a world of inspiring content. Slidely Share is a vibrant community where creativity knows no bounds.</li>
+    <li><strong>Slidely Live</strong>: A live-streaming solution that enables users to broadcast their events, presentations, and stories in real-time. With interactive features and robust analytics, Slidely Live is the perfect tool for engaging with audiences on a deeper level.</li>
+  </ul>
+
+  <h2>Customer Experience</h2> <!-- 二级标题 -->
+  <p>At Slidely, we prioritize customer satisfaction. Our dedicated support team is always ready to assist users with any questions or issues they may encounter. We believe in building long-term relationships with our customers, and we are committed to providing exceptional service.</p>
+
+  <h2>Looking Ahead</h2> <!-- 二级标题 -->
+  <p>As we look to the future, we are excited about the endless possibilities for innovation and growth. Slidely is dedicated to continuously improving our products and expanding our offerings. We are grateful to our community for their support, and we look forward to sharing this journey with you.</p>
+
+  <p><strong>Thank you for being a part of the Slidely community. Together, we are shaping the future of digital content.</strong></p> <!-- 加粗感谢语 -->
+</div>
+
+
+
+</body>
+
+
+</html>

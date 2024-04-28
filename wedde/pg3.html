@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+  <link rel="stylesheet" href="your-css-file.css"> <!-- 引用你的样式文件 -->
+
+  <style>
+
+    .header-icons a {
+  color: inherit; /* 继承默认颜色 */
+  text-decoration: none; /* 去掉下划线 */
+}
+
+.header-icons a:hover i {
+  color: #333; /* 鼠标悬停时的颜色 */
+  transition: color 0.3s; /* 平滑过渡效果 */
+}
+
+    body {
+      font-family: "Merriweather", serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5; <!-- 更浅的背景色 -->
+    }
+
+     .header { <!-- 添加导航按钮 -->
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: white; <!-- 使用白色背景 -->
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); <!-- 添加阴影 -->
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px; <!-- 添加按钮间距 -->
+    }
+
+    .nav-buttons button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      padding: 10px;
+      color: #333;
+    }
+
+    .nav-buttons button:hover {
+      color: #555; <!-- 按钮悬停时颜色变化 -->
+    }
+
+    .product-container {
+      display: flex;
+      flex-direction: column; <!-- 垂直布局 -->
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .product-description { <!-- 产品介绍部分 -->
+      background-color: white; <!-- 设置背景色 -->
+      padding: 20px; <!-- 内边距 -->
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); <!-- 阴影 -->
+    }
+
+    .product-images {
+      display: flex;
+      flex-wrap: wrap; <!-- 允许多行 -->
+      gap: 10px; <!-- 图片间距 -->
+      justify-content: center; <!-- 居中图片 -->
+    }
+
+    .product-images img {
+      max-width: 200px; <!-- 图片最大宽度 -->
+      height: auto; <!-- 高度自适应 -->
+      border: 1px solid #ddd; <!-- 边框 -->
+      border-radius: 5px; <!-- 边角圆润 -->
+    }
+
+    .footer { <!-- 底部样式 -->
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center; <!-- 文字居中 -->
+    }
+
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* 居中网格 */
+      max-width: 1200px; /* 最大宽度与头部和页脚一致 */
+      margin: 20px auto; /* 上下外边距20px，左右自动 */
+    }
+
+    .gallery-item {
+      width: calc(33.333% - 20px); /* 三分之一宽度减去间隙 */
+      margin: 10px; /* 项之间的间隙 */
+      text-align: center; /* 文本居中 */
+    }
+
+    .gallery-image img {
+      width: 100%; /* 图片宽度100% */
+      height: auto; /* 图片高度自动 */
+    }
+
+    .gallery-description {
+      margin-top: 8px; /* 描述与图片间隔 */
+      font-size: 1em; /* 字体大小 */
+    }
+
+   .gallery-description a,
+.gallery-description a:visited,
+.gallery-item a,
+.gallery-item a:visited { /* 更具体的选择器，确保覆盖默认样式 */
+  color: black !important; /* 确保文本颜色为黑色，使用!important确保覆盖 */
+  text-decoration: none !important; /* 去除下划线，使用!important确保覆盖 */
+}
+
+.gallery-description a:hover,
+.gallery-item a:hover {
+  color: #333 !important; /* 鼠标悬停时的颜色变更为深灰色 */
+  transition: color 0.3s; /* 添加颜色变化的平滑过渡效果 */
+}
+
+
+    .price {
+      display: block; /* 让价格单独一行 */
+      font-weight: bold;
+      margin-top: 4px; /* 价格与描述之间的间距 */
+    }
+
+    .logo-home {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-grow: 1;
+    }
+
+    .logo-home img {
+      width: 150px;
+      height: auto;
+      transition: opacity 0.3s;
+    }
+
+    .logo-home:hover img {
+      opacity: 0.7;
+    }
+
+    .header-promo p {
+      font-size: 0.9em;
+      text-align: center;
+      margin: 0;
+    }
+
+    .header-icons {
+      font-size: 1.5em;
+      display: flex;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+
+    .header-icons i {
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .header-top {
+        flex-wrap: wrap;
+      }
+      .header-promo {
+        flex-basis: 100%;
+        order: 1;
+        padding: 10px 0;
+      }
+      .header-icons {
+        order: 2;
+      }
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+    }
+
+    .gallery-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gallery-image {
+      margin: 10px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery-link {
+      margin: 10px;
+      text-decoration: none;
+      color: black;
+      font-size: 1.5em;
+    }
+  .product-container {
+    display: flex;
+    flex-direction: row; /* This ensures that the image and details are in a row */
+    align-items: flex-start; /* Aligns items to the start of the flex container */
+    gap: 20px; /* This adds space between the image and the details */
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.product-image {
+    flex: 0 1 300px; /* The image can grow or shrink but starts at 300px */
+    /* Remove the max-width and use flex-basis instead */
+}
+
+.product-details {
+    flex: 1; /* The details will take up the rest of the space */
+    /* padding-left: 20px; */ /* You might not need this anymore because of the gap property */
+}
+
+/* Ensure the image is not bigger than its container */
+.product-image img {
+    width: 100%; /* Make the image width responsive to its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column; /* Stack the image and details on small screens */
+        align-items: center; /* Center align the items */
+    }
+
+    .product-image, .product-details {
+        flex-basis: auto; /* Let them take up the space they need */
+    }
+}
+
+.product-images {
+      display: flex;
+      justify-content: center;
+      flex-direction: column; /* 一列放置 */
+      align-items: center; /* 居中 */
+      gap: 20px; /* 图像之间的间距 */
+    }
+
+    .product-images img {
+      width: 100%; /* 最大宽度为100% */
+      max-width: 800px; /* 确保不超过400px */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+
+
+/* 文本样式调整 */
+.product-details h1 {
+    margin: 0;
+    font-size: 1.5em; /* 或根据您的需要调整 */
+}
+
+.price {
+    color: #FF4500; /* 根据您的设计调整价格颜色 */
+    font-size: 1.2em; /* 或根据您的需要调整 */
+}
+
+/* 按钮和选择器样式调整 */
+.color-selection button,
+.size-selection select,
+.quantity-selection input,
+.product-actions button {
+    /* 添加适当的样式 */
+}
+
+.horizontal-scroll-container {
+    display: flex;  /* Flexbox 布局 */
+    overflow-x: auto;  /* 添加水平滚动条 */
+    padding: 10px;  /* 设置内边距 */
+}
+
+.additional-images {
+    display: flex;
+    flex-direction: row;  /* 让小图片水平排列 */
+}
+
+.additional-images img {
+    width: 50px;  /* 小图片的宽度 */
+    height: auto;  /* 高度自适应 */
+    margin-right: 10px;  /* 图片之间的间距 */
+}
+
+.product-description {
+    flex-grow: 1;  /* 占据剩余空间 */
+    padding: 0 20px;  /* 设置内边距 */
+}
+
+.product-images img {
+  width: 100%; /* 宽度设为100% */
+  max-width: 800px; /* 最大宽度 */
+  height: auto; /* 高度自适应 */
+}
+
+
+
+/* 其他样式可以根据需要进行调整 */
+
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      width: 100%;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .social-icons {
+      font-size: 24px; /* 调整图标大小 */
+    }
+
+    .social-icons a {
+      color: white; /* 设置图标颜色 */
+      margin-right: 10px; /* 设置图标间距 */
+      text-decoration: none; /* 去除链接下划线 */
+    }
+
+    /* 在小屏幕设备上堆叠图标而不是水平排列 */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-icons {
+        margin-bottom: 20px;
+      }
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: auto;
+    }
+
+      /* 评论部分样式 */
+    .reviews-container {
+      margin: 20px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .review {
+      margin-bottom: 15px; /* 评论之间增加空白 */
+      font-size: 1.1em; /* 调整字体大小 */
+      border-bottom: 1px solid #ddd; /* 添加底部边框 */
+      padding-bottom: 10px; /* 底部空白 */
+    }
+
+    .review:last-child {
+      border-bottom: none; /* 最后一个评论没有边框 */
+    }
+
+    .review p {
+      margin: 0;
+    }
+
+    .product-gallery {
+      display: flex;
+      justify-content: flex-start; /* 左对齐布局 */
+      flex-wrap: wrap; /* 支持多行 */
+      gap: 20px; /* 图片之间的间距 */
+      padding: 20px; /* 画廊的内边距 */
+    }
+
+    .product-item {
+      flex: 0 1 20%; /* 固定占用20%的宽度 */
+      text-align: center; /* 文本居中 */
+    }
+
+    .product-item img {
+      max-width: 100%; /* 图片最大宽度为容器的100% */
+      border: 1px solid #ddd; /* 添加边框 */
+      border-radius: 5px; /* 边角圆润 */
+    }
+
+    .product-price {
+      color: #FF4500; /* 调整价格的颜色 */
+      font-size: 1.2em; /* 调整字体大小 */
+    }
+
+
+    .product-title {
+      font-size: 1em; /* 调整产品标题的大小 */
+    }
+
+    .centered {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+
+  <div class="header-top">
+    <a href="Homepage.html" class="logo-home">
+      <img src="img/logo.png" alt="Slide.ly Home" class="logo">
+    </a>
+    <div class="header-promo">
+      <p>Members: Free Shipping on Orders $50+ Sign Up</p>
+      <p>Save Up to 40% Shop All Our New Markdowns</p>
+    </div>
+      <div class="header-icons">
+    <a href="search.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+    <a href="Bag.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+    <a href="user.html"><i class="fa fa-user" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+
+<div class="product-container">
+    <div class="product-image">
+        <img src="img/t1.png" alt="Japanese-style Linen Floral Slippers">
+    </div>
+    <div class="product-details"> <!-- 增加内边距和字体大小 -->
+    <h1 style="font-size: 2em;">
+"Squishy Ground Sensation" Women's Indoor Home Slippers for Summer 2024, New Style for Outdoor Wear, Anti-Slip, Thick-Sole, Unisex Beach Sandals.</h1>
+    <p class="price" style="font-size: 1.5em; color: #FF4500;">$25</p>
+
+    <div class="color-selection" style="margin-top: 20px;"> <!-- 增加上边距 -->
+        <label style="font-size: 1.2em;">Color classification:</label> <!-- 增加字体大小 -->
+        <button style="padding: 10px 20px; font-size: 1.2em;">Black</button> <!-- 增加按钮大小 -->
+        <button style="padding: 10px 20px; font-size: 1.2em;">White</button> <!-- 增加按钮大小 -->
+    </div>
+
+    <div class="size-selection" style="margin-top: 20px;"> <!-- 增加上边距 -->
+        <label style="font-size: 1.2em;">Size:</label>
+        <select style="padding: 10px; font-size: 1.2em;"> <!-- 增加下拉列表大小 -->
+            <option>35-36</option>
+            <option>37-38</option>
+            <option>39-40</option>
+        </select>
+    </div>
+
+    <div class="quantity-selection" style="margin-top: 20px;"> <!-- 增加上边距 -->
+        <label style="font-size: 1.2em;">Quantity:</label>
+        <input type="number" value="1" style="width: 60px; font-size: 1.2em;"> <!-- 调整输入框大小 -->
+    </div>
+
+    <div class="product-actions" style="margin-top: 20px;"> <!-- 增加上边距 -->
+        <button style="padding: 15px 30px; font-size: 1.2em;">Buy now</button> <!-- 增加按钮大小 -->
+        <button style="padding: 15px 30px; font-size: 1.2em;">Add to cart</button> <!-- 增加按钮大小 -->
+    </div>
+</div>
+
+        </div>
+    </div>
+
+     <div class="header"> <!-- 头部包含导航按钮 -->
+    <h1>Product Details</h1>
+   
+  </div>
+         <div class="product-images"> <!-- 产品图片部分 -->
+        <img src="img/t2.png" alt="Product Image 1">
+        <img src="img/t3.png" alt="Product Image 2">
+        <img src="img/t4.png" alt="Product Image 3">
+        <img src="img/t5.png" alt="Product Image 3">
+        <img src="img/t6.png" alt="Product Image 3">
+        <img src="img/t7.png" alt="Product Image 3">
+    </div>
+
+  <div class="product-container"> <!-- 主体内容 -->
+    <div class="product-description"> <!-- 产品介绍 -->
+   
+    </div>
+    <!-- 重复gallery-item结构来添加更多产品 -->
+  </div>
+  <!-- 文字描述 -->
+
+
+ <div style="display: flex; justify-content: center; padding: 20px;"> <!-- 增加居中对齐 -->
+    <div id="details-container" style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; max-width: 600px;"> <!-- 限制最大宽度 -->
+        <h2 style="margin-bottom: 10px; text-align: center;">Product Specifications</h2> <!-- 增加标题居中 -->
+        <ul style="list-style-type: none; padding: 0; text-align: left;"> <!-- 保持列表左对齐 -->
+            <li><strong>Brand:</strong> XMISTUO</li> <!-- 使用粗体强调 -->
+            <li><strong>Popular Element:</strong> Hollow</li>
+            <li><strong>Style:</strong> Minimalist</li>
+            <li><strong>Lining Material:</strong> PU</li>
+            <li><strong>Size:</strong> 36/37, 38/39, 40/41, 42/43, 44/45</li>
+            <li><strong>Sales Channel Type:</strong> E-commerce only (online sales only)</li>
+            <li><strong>Applicable Target:</strong> Youth</li>
+            <li><strong>Suitable Occasion:</strong> Casual</li>
+            <li><strong>Upper Material:</strong> EVA</li>
+            <li><strong>Shoe Manufacturing Process:</strong> Injection Molded</li>
+            <li><strong>Model Number:</strong> 5023-1 Black and White Cat</li>
+            <li><strong>Heel Height:</strong> Mid Heel (3-5 cm)</li>
+            <li><strong>Insole Material:</strong> EVA</li>
+            <li><strong>Release Year and Season:</strong> Spring 2024</li>
+            <li><strong>Sole Style:</strong> Platform Sole</li>
+            <li><strong>Pattern:</strong> Solid Color</li>
+            <li><strong>Outsole Material:</strong> EVA</li>
+            <li><strong>Leather Characteristics:</strong> Polished</li>
+            <li><strong>Color Variations:</strong></li>
+            <ul style="list-style-type: circle; padding-left: 20px;"> <!-- 子列表，保持左对齐 -->
+                <li>5023-1 White Sole with Black and White Cat Slippers</li>
+                <li>5023-1 White Sole with White Cat Slippers</li>
+                <li>5023-1 White Sole with Black Cat Slippers</li>
+                <li>5023-1 Black Sole with Black and White Cat Slippers</li>
+                <li>5023-1 Black Sole with White Cat Slippers</li>
+                <li>5023-1 Black Sole with Black Cat Slippers</li>
+                <li>5023 White Sole Slippers</li>
+                <li>5023 Black Sole Slippers</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+
+<div style="display: flex; justify-content: center;"> <!-- Outer container to center the content -->
+  <div class="price-instructions" style="max-width: 600px; font-size: 0.9em; text-align: center;"> <!-- Inner container with centered text -->
+    <p>Strike-through prices represent the retail price, tag price, genuine retail price, manufacturer's guide price, or past sales price. They are for reference only and do not indicate original prices.</p>
+    <p>Non-strike-through prices are the current marked prices, which may change due to promotions, member discounts, coupons, points, etc. The final transaction price is based on the order settlement page.</p>
+    <p>The merchant's detail page (including the main image) showing fixed prices, promotional prices, or discounted prices may involve conditions, such as coupons, full-reduction activities, or specific promotional periods. Refer to the checkout page for actual prices and conditions.</p>
+    <p>This explanation is valid only in the context of price comparisons. Refer to the "Taobao Price Release Specification" for more details. If the merchant provides a separate explanation for strike-through prices, their interpretation takes precedence.</p>
+  </div>
+</div>
+
+
+
+   <div class="reviews-container" style="padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; max-width: 600px; margin: auto;"> <!-- 添加样式 -->
+  <h2 style="text-align: center; font-size: 1.5em; margin-bottom: 20px;">Product Reviews</h2> <!-- 标题居中 -->
+
+  <div class="review" style="margin-bottom: 20px;"> <!-- 每个评论之间增加间距 -->
+    <p style="margin: 0; font-size: 1.2em;"><strong>User 1</strong> <span style="color: gray;">- March 1, 2024</span></p> <!-- 用户和时间 -->
+    <p style="margin: 0;">This product is amazing!</p> <!-- 评论内容 -->
+    <div style="margin-top: 5px;"> <!-- 评分 -->
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: lightgray;"><i class="fa fa-star"></i></span> <!-- 4星评级 -->
+    </div>
+  </div>
+
+  <div class="review" style="margin-bottom: 20px;">
+    <p style="margin: 0; font-size: 1.2em;"><strong>User 2</strong> <span style="color: gray;">- April 12, 2024</span></p>
+    <p style="margin: 0;">Good quality, very satisfied.</p>
+    <div style="margin-top: 5px;">
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span> <!-- 5星评级 -->
+    </div>
+  </div>
+
+  <div class="review" style="margin-bottom: 20px;">
+    <p style="margin: 0; font-size: 1.2em;"><strong>User 3</strong> <span style="color: gray;">- May 5, 2024</span></p>
+    <p style="margin: 0;">Would buy again!</p>
+    <div style="margin-top: 5px;">
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: gold;"><i class="fa fa-star"></i></span>
+      <span style="color: lightgray;"><i class="fa fa-star"></i></span>
+      <span style="color: lightgray;"><i class="fa fa-star"></i></span> <!-- 3星评级 -->
+    </div>
+  </div>
+</div>
+
+<h1>You May Like</h1>
+
+<div class="product-gallery">
+    <div class="product-item">
+      <img src="img/in3.png" alt="Product 1" width="150" height="150">
+      <p class="product-title">Cartoon Panda Slippers for Women</p>
+      <p class="product-price">$17.80</p>
+    </div>
+    <div class="product-item">
+      <img src="img/in1.png" alt="Product 2" width="150" height="150">
+      <p class="product-title">Cartoon Panda Slippers for Women</p>
+      <p class="product-price">$27.69</p>
+    </div>
+    <div class="product-item">
+      <img src="img/in2.png" alt="Product 3" width="150" height="150">
+      <p class="product-title">Cartoon Panda Slippers for Women</p>
+      <p class="product-price">$21.66</p>
+    </div>
+    <!-- 其他产品项 -->
+  </div>
+
+
+</body>
+
+  <!-- 页面的主体内容 -->
+
+  <!-- 假设这里有更多的内容 -->
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>RESOURCES</h3>
+        <ul>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Find A Store</a></li>
+          <li><a href="#">Nike Slides Journal</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>HELP</h3>
+        <ul>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Order Status</a></li>
+          <li><a href="#">Shipping And Delivery</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>PROMOTIONS</h3>
+        <ul>
+          <li><a href="#">Student</a></li>
+          <li><a href="#">Military</a></li>
+          <li><a href="#">Teacher</a></li>
+          <li><a href="#">Birthday</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>FOLLOW US</h3>
+        <!-- Social icons here -->
+         <div class="footer-container">
+      <div class="social-icons">
+        <!-- 添加YouTube图标链接 -->
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <!-- 添加TikTok图标链接 -->
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <!-- 添加Pinterest图标链接 -->
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+        <!-- 添加Twitter图标链接 -->
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <!-- 添加Instagram图标链接 -->
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <!-- 添加Facebook图标链接 -->
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

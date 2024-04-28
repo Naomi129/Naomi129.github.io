@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Discount Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Merriweather', serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .page-title {
+      font-size: 2em;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .application-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* 控制表单项之间的间距 */
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 700; /* 使标签加粗 */
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px; 
+    }
+
+    .submit-button {
+      padding: 10px 20px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #444; /* 鼠标悬停时背景颜色 */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="page-title">Student Discount Application</h1>
+
+    <!-- 表单部分 -->
+    <form class="application-form" action="submit-student-discount.php" method="post">
+      <div class="form-group">
+        <label for="student-name">Full Name</label>
+        <input type="text" id="student-name" name="student-name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="student-email">Student Email</label>
+        <input type="email" id="student-email" name="student-email" placeholder="Enter your student email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="student-school">School Name</label>
+        <input type="text" id="student-school" name="student-school" placeholder="Enter your school's name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="student-id">Student ID</label>
+        <input type="text" id="student-id" name="student-id" placeholder="Enter your student ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="student-proof">Upload Student ID Proof</label>
+        <input type="file" id="student-proof" name="student-proof" required> <!-- 上传学生证扫描件 -->
+      </div>
+
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
