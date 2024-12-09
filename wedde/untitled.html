@@ -27,6 +27,24 @@
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .language-toggle:hover {
+            background: rgba(226, 200, 122, 0.1);
         }
 
         .header {
@@ -187,13 +205,15 @@
 
         .card-title {
             color: var(--accent-color);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-size: 1.2em;
+            text-align: center;
         }
 
         .card-position {
             color: var(--text-secondary);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            font-size: 0.9em;
         }
 
         .card-img {
@@ -201,6 +221,8 @@
             border-radius: 10px;
             margin-bottom: 10px;
             transition: transform 0.3s ease;
+            background: rgba(255,255,255,0.05);
+            padding: 5px;
         }
 
         .modal {
@@ -269,28 +291,29 @@
 </head>
 <body>
     <div class="container">
+        <button class="language-toggle" onclick="toggleLanguage()">Language / 语言</button>
         <div class="header">
-            <h1 class="title">✧ Tarot Reading ✧</h1>
+            <h1 class="title" id="mainTitle"></h1>
         </div>
 
-        <textarea placeholder="Before you begin, silently repeat your question three times in your mind with sincerity, then click the start button...."></textarea>
+        <textarea id="questionTextarea"></textarea>
         
         <div class="spread-options">
-            <div class="spread-choice" onclick="selectSpread('auto')">Let the Tarot choose a spread for me</div>
-            <div class="spread-choice" onclick="selectSpread('manual')">I want to choose a spread myself</div>
+            <div class="spread-choice" onclick="selectSpread('auto')" id="autoSpreadBtn"></div>
+            <div class="spread-choice" onclick="selectSpread('manual')" id="manualSpreadBtn"></div>
         </div>
 
         <div id="manual-spread-selection">
             <div class="spread-options">
-                <div class="spread-choice" onclick="setSpread('three')">Three-Card Spread</div>
-                <div class="spread-choice" onclick="setSpread('cross')">Crossroads Spread</div>
-                <div class="spread-choice" onclick="setSpread('celtic')">Celtic Cross Spread</div>
+                <div class="spread-choice" onclick="setSpread('three')" id="threeSpreadBtn"></div>
+                <div class="spread-choice" onclick="setSpread('cross')" id="crossSpreadBtn"></div>
+                <div class="spread-choice" onclick="setSpread('celtic')" id="celticSpreadBtn"></div>
             </div>
         </div>
 
         <div class="button-group">
-            <button class="secondary-button" onclick="showSpreadInfo()">Show Spread Info</button>
-            <button class="primary-button" onclick="startReading()">Start Reading</button>
+            <button class="secondary-button" onclick="showSpreadInfo()" id="showInfoBtn"></button>
+            <button class="primary-button" onclick="startReading()" id="startReadingBtn"></button>
         </div>
 
         <div class="cards-area"></div>
@@ -301,45 +324,45 @@
     <div id="spreadInfoModal" class="modal">
         <div class="modal-content">
             <button class="close-button" onclick="closeModal()">&times;</button>
-            <h2 style="color: var(--accent-color)">Spread Information</h2>
+            <h2 style="color: var(--accent-color)" id="spreadInfoTitle"></h2>
             
             <div class="spread-info">
-                <h3 style="color: var(--accent-color)">Three-Card Spread</h3>
-                <p>This is a basic and practical spread that examines your question through three time dimensions:</p>
+                <h3 style="color: var(--accent-color)" id="threeCardTitle"></h3>
+                <p id="threeCardDesc"></p>
                 <ul>
-                    <li>Card 1: Represents the past influence</li>
-                    <li>Card 2: Reflects the current situation</li>
-                    <li>Card 3: Predicts the future development</li>
+                    <li id="threeCardPast"></li>
+                    <li id="threeCardPresent"></li>
+                    <li id="threeCardFuture"></li>
                 </ul>
-                <p style="color: var(--text-secondary)">Suitable for: Daily inquiries, simple questions, timeline analysis</p>
+                <p style="color: var(--text-secondary)" id="threeCardSuitable"></p>
                 <img class="spread-image" src="https://via.placeholder.com/400x200?text=Three-Card+Spread" alt="Three-Card Spread Example">
             </div>
 
             <div class="spread-info">
-                <h3 style="color: var(--accent-color)">Crossroads Spread</h3>
-                <p>This spread is designed for decision-making and choices. It contains four positions:</p>
+                <h3 style="color: var(--accent-color)" id="crossTitle"></h3>
+                <p id="crossDesc"></p>
                 <ul>
-                    <li>Center: Your current situation</li>
-                    <li>Left: The first option/choice</li>
-                    <li>Right: The second option/choice</li>
-                    <li>Bottom: The potential outcome</li>
+                    <li id="crossCenter"></li>
+                    <li id="crossLeft"></li>
+                    <li id="crossRight"></li>
+                    <li id="crossBottom"></li>
                 </ul>
-                <p style="color: var(--text-secondary)">Suitable for: Facing a choice, decision analysis, comparing pros and cons</p>
+                <p style="color: var(--text-secondary)" id="crossSuitable"></p>
                 <img class="spread-image" src="https://via.placeholder.com/400x200?text=Crossroads+Spread" alt="Crossroads Spread Example">
             </div>
 
             <div class="spread-info">
-                <h3 style="color: var(--accent-color)">Celtic Cross Spread</h3>
-                <p>The most comprehensive and in-depth spread. It uses ten positions to provide a detailed analysis:</p>
+                <h3 style="color: var(--accent-color)" id="celticTitle"></h3>
+                <p id="celticDesc"></p>
                 <ul>
-                    <li>Center: The core issue</li>
-                    <li>Cross: The immediate challenge</li>
-                    <li>Base: The past foundation</li>
-                    <li>Influences: Surrounding influences</li>
-                    <li>Goal: The desired outcome</li>
-                    <li>Future: Potential developments</li>
+                    <li id="celticCenter"></li>
+                    <li id="celticCross"></li>
+                    <li id="celticBase"></li>
+                    <li id="celticInfluences"></li>
+                    <li id="celticGoal"></li>
+                    <li id="celticFuture"></li>
                 </ul>
-                <p style="color: var(--text-secondary)">Suitable for: Complex issues, deep analysis, comprehensive understanding</p>
+                <p style="color: var(--text-secondary)" id="celticSuitable"></p>
                 <img class="spread-image" src="https://via.placeholder.com/400x200?text=Celtic+Cross+Spread" alt="Celtic Cross Spread Example">
             </div>
         </div>
@@ -348,6 +371,80 @@
     <script>
         let selectedSpreadType = 'auto';
         let currentSpread = 'three';
+        let currentLang = 'en'; // 默认英文
+
+        const translations = {
+            en: {
+                mainTitle: "✧ Tarot Reading ✧",
+                questionPlaceholder: "Before you begin, silently repeat your question three times in your mind with sincerity, then click the start button...",
+                autoSpreadBtn: "Let the Tarot choose a spread for me",
+                manualSpreadBtn: "I want to choose a spread myself",
+                threeSpreadBtn: "Three-Card Spread",
+                crossSpreadBtn: "Crossroads Spread",
+                celticSpreadBtn: "Celtic Cross Spread",
+                showInfoBtn: "Show Spread Info",
+                startReadingBtn: "Start Reading",
+                spreadInfoTitle: "Spread Information",
+                threeCardTitle: "Three-Card Spread",
+                threeCardDesc: "This is a basic and practical spread that examines your question through three time dimensions:",
+                threeCardPast: "Card 1: Represents the past influence",
+                threeCardPresent: "Card 2: Reflects the current situation",
+                threeCardFuture: "Card 3: Predicts the future development",
+                threeCardSuitable: "Suitable for: Daily inquiries, simple questions, timeline analysis",
+                crossTitle: "Crossroads Spread",
+                crossDesc: "This spread is designed for decision-making and choices. It contains four positions:",
+                crossCenter: "Center: Your current situation",
+                crossLeft: "Left: The first option/choice",
+                crossRight: "Right: The second option/choice",
+                crossBottom: "Bottom: The potential outcome",
+                crossSuitable: "Suitable for: Facing a choice, decision analysis, comparing pros and cons",
+                celticTitle: "Celtic Cross Spread",
+                celticDesc: "The most comprehensive and in-depth spread. It uses ten positions to provide a detailed analysis:",
+                celticCenter: "Center: The core issue",
+                celticCross: "Cross: The immediate challenge",
+                celticBase: "Base: The past foundation",
+                celticInfluences: "Influences: Surrounding influences",
+                celticGoal: "Goal: The desired outcome",
+                celticFuture: "Future: Potential developments",
+                celticSuitable: "Suitable for: Complex issues, deep analysis, comprehensive understanding",
+                summaryText: "Overall, these cards suggest that by understanding past influences, acknowledging current challenges, and moving forward with awareness, you can find greater clarity and harmony."
+            },
+            zh: {
+                mainTitle: "✧ 塔罗占卜 ✧",
+                questionPlaceholder: "在开始之前，请在心中默念你的问题三次，然后点击开始按钮...",
+                autoSpreadBtn: "让塔罗为我选择牌阵",
+                manualSpreadBtn: "我要自己选择牌阵",
+                threeSpreadBtn: "三张牌阵",
+                crossSpreadBtn: "十字路口阵",
+                celticSpreadBtn: "凯尔特十字阵",
+                showInfoBtn: "查看牌阵说明",
+                startReadingBtn: "开始占卜",
+                spreadInfoTitle: "牌阵说明",
+                threeCardTitle: "三张牌阵",
+                threeCardDesc: "这是一个基础且实用的牌阵，通过三个时间维度解读你的问题：",
+                threeCardPast: "第一张牌：代表过去的影响",
+                threeCardPresent: "第二张牌：反映当前的状况",
+                threeCardFuture: "第三张牌：预示未来的发展",
+                threeCardSuitable: "适合：日常咨询、简单问题、时间线解读",
+                crossTitle: "十字路口阵",
+                crossDesc: "用于决策和选择的牌阵，共有四个位置：",
+                crossCenter: "中心：当前的处境",
+                crossLeft: "左侧：第一个选择",
+                crossRight: "右侧：第二个选择",
+                crossBottom: "底部：潜在的结果",
+                crossSuitable: "适合：面临选择、决策分析、优劣对比",
+                celticTitle: "凯尔特十字阵",
+                celticDesc: "最全面和深入的牌阵，通过十个位置详细解读情况：",
+                celticCenter: "核心：当前的核心问题",
+                celticCross: "交叉：面临的挑战",
+                celticBase: "基础：过去的基础",
+                celticInfluences: "影响：周围的影响",
+                celticGoal: "目标：期望的结果",
+                celticFuture: "未来：潜在的发展",
+                celticSuitable: "适合：复杂问题、深度分析、全面解读",
+                summaryText: "整体来看，这些牌暗示：通过理解过去的影响，正视当前的挑战，并以觉知前行，你能够获得更清晰的方向与和谐。"
+            }
+        };
 
         const majorArcana = [
             { name: "The Fool", imageUrl: "./imgg/0.png", explanation: "A new beginning, spontaneity, a free spirit." },
@@ -373,6 +470,56 @@
             { name: "Judgement", imageUrl: "./imgg/20.png", explanation: "Reflection, reckoning, inner calling." },
             { name: "The World", imageUrl: "./imgg/21.png", explanation: "Completion, integration, accomplishment, travel." }
         ];
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            updateTexts();
+        }
+
+        function updateTexts() {
+            const t = translations[currentLang];
+
+            document.getElementById('mainTitle').textContent = t.mainTitle;
+            document.getElementById('questionTextarea').placeholder = t.questionPlaceholder;
+            document.getElementById('autoSpreadBtn').textContent = t.autoSpreadBtn;
+            document.getElementById('manualSpreadBtn').textContent = t.manualSpreadBtn;
+            document.getElementById('threeSpreadBtn').textContent = t.threeSpreadBtn;
+            document.getElementById('crossSpreadBtn').textContent = t.crossSpreadBtn;
+            document.getElementById('celticSpreadBtn').textContent = t.celticSpreadBtn;
+            document.getElementById('showInfoBtn').textContent = t.showInfoBtn;
+            document.getElementById('startReadingBtn').textContent = t.startReadingBtn;
+
+            document.getElementById('spreadInfoTitle').textContent = t.spreadInfoTitle;
+
+            document.getElementById('threeCardTitle').textContent = t.threeCardTitle;
+            document.getElementById('threeCardDesc').textContent = t.threeCardDesc;
+            document.getElementById('threeCardPast').textContent = t.threeCardPast;
+            document.getElementById('threeCardPresent').textContent = t.threeCardPresent;
+            document.getElementById('threeCardFuture').textContent = t.threeCardFuture;
+            document.getElementById('threeCardSuitable').textContent = t.threeCardSuitable;
+
+            document.getElementById('crossTitle').textContent = t.crossTitle;
+            document.getElementById('crossDesc').textContent = t.crossDesc;
+            document.getElementById('crossCenter').textContent = t.crossCenter;
+            document.getElementById('crossLeft').textContent = t.crossLeft;
+            document.getElementById('crossRight').textContent = t.crossRight;
+            document.getElementById('crossBottom').textContent = t.crossBottom;
+            document.getElementById('crossSuitable').textContent = t.crossSuitable;
+
+            document.getElementById('celticTitle').textContent = t.celticTitle;
+            document.getElementById('celticDesc').textContent = t.celticDesc;
+            document.getElementById('celticCenter').textContent = t.celticCenter;
+            document.getElementById('celticCross').textContent = t.celticCross;
+            document.getElementById('celticBase').textContent = t.celticBase;
+            document.getElementById('celticInfluences').textContent = t.celticInfluences;
+            document.getElementById('celticGoal').textContent = t.celticGoal;
+            document.getElementById('celticFuture').textContent = t.celticFuture;
+            document.getElementById('celticSuitable').textContent = t.celticSuitable;
+
+            summaryText = t.summaryText;
+        }
+
+        let summaryText = translations[currentLang].summaryText;
 
         function selectSpread(type) {
             selectedSpreadType = type;
@@ -404,7 +551,7 @@
         function startReading() {
             const question = document.querySelector('textarea').value;
             if (!question) {
-                alert('Please enter your question.');
+                alert(currentLang === 'en' ? 'Please enter your question.' : '请输入你的问题。');
                 return;
             }
 
@@ -451,7 +598,6 @@
 
             // 随机逆位
             if (Math.random() < 0.5) {
-                // 50%概率逆位
                 const img = card.querySelector('.card-img');
                 img.style.transform = 'rotate(180deg)';
             }
@@ -467,11 +613,15 @@
 
         function getPositions() {
             if (currentSpread === 'cross') {
-                return ['Current Situation', 'Option One', 'Option Two', 'Outcome'];
+                return currentLang === 'en' ? 
+                    ['Current Situation', 'Option One', 'Option Two', 'Outcome'] :
+                    ['当前处境', '选择一', '选择二', '结果'];
             } else if (currentSpread === 'celtic') {
-                return ['Core Issue', 'Challenge', 'Past', 'Future', 'Conscious', 'Subconscious', 'Advice', 'External', 'Hopes', 'Outcome'];
+                return currentLang === 'en' ?
+                    ['Core Issue', 'Challenge', 'Past', 'Future', 'Conscious', 'Subconscious', 'Advice', 'External', 'Hopes', 'Outcome']
+                    : ['核心问题','挑战','过去','未来','显意识','潜意识','建议','外部影响','希望','结果'];
             }
-            return ['Past', 'Present', 'Future'];
+            return currentLang === 'en' ? ['Past', 'Present', 'Future'] : ['过去','现在','未来'];
         }
 
         function shuffleArray(array) {
@@ -486,13 +636,10 @@
             const combinedDiv = document.getElementById('combinedExplanation');
             combinedDiv.style.display = 'block';
 
-            // 将所有卡片解释整合成一段文字
             const explanations = cards.map(c => c.explanation);
             const combinedText = explanations.join(' ');
 
-            const summary = "Overall, these cards suggest that by understanding past influences, acknowledging current challenges, and moving forward with awareness, you can find greater clarity and harmony.";
-            
-            combinedDiv.innerHTML = `<p>${combinedText}</p><p><strong>${summary}</strong></p>`;
+            combinedDiv.innerHTML = `<p>${combinedText}</p><p><strong>${summaryText}</strong></p>`;
         }
 
         window.onclick = function(event) {
@@ -500,6 +647,9 @@
                 event.target.style.display = 'none';
             }
         }
+
+        // 初次加载更新文本
+        updateTexts();
     </script>
 </body>
 </html>
