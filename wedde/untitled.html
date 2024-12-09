@@ -182,7 +182,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 20px; /* 调整间距 */
         }
 
         .card-title {
@@ -200,14 +200,7 @@
             max-width: 100%;
             border-radius: 10px;
             margin-bottom: 10px;
-        }
-
-        .card-explanation {
-            margin-top: auto;
-            text-align: center;
-            font-size: 0.9em;
-            line-height: 1.4;
-            color: var(--text-primary);
+            transition: transform 0.3s ease;
         }
 
         .modal {
@@ -266,7 +259,6 @@
             border: 1px solid var(--accent-color);
         }
 
-        /* 调整合并解释的间距 */
         .combined-explanation {
             margin-top: 60px;
             background: rgba(255,255,255,0.05);
@@ -281,7 +273,7 @@
             <h1 class="title">✧ Tarot Reading ✧</h1>
         </div>
 
-        <textarea placeholder="Please describe your question..."></textarea>
+        <textarea placeholder="Before you begin, silently repeat your question three times in your mind with sincerity, then click the start button...."></textarea>
         
         <div class="spread-options">
             <div class="spread-choice" onclick="selectSpread('auto')">Let the Tarot choose a spread for me</div>
@@ -303,7 +295,6 @@
 
         <div class="cards-area"></div>
 
-        <!-- 用于显示整合后的解释文字 -->
         <div id="combinedExplanation" class="combined-explanation" style="display:none;"></div>
     </div>
 
@@ -359,28 +350,28 @@
         let currentSpread = 'three';
 
         const majorArcana = [
-            { name: "The Fool", imageUrl: "https://via.placeholder.com/150x250?text=The+Fool", explanation: "A new beginning, spontaneity, a free spirit." },
-            { name: "The Magician", imageUrl: "https://via.placeholder.com/150x250?text=The+Magician", explanation: "Power, resourcefulness, inspired action." },
-            { name: "The High Priestess", imageUrl: "https://via.placeholder.com/150x250?text=The+High+Priestess", explanation: "Intuition, sacred knowledge, divine feminine." },
-            { name: "The Empress", imageUrl: "https://via.placeholder.com/150x250?text=The+Empress", explanation: "Fertility, femininity, beauty, nature." },
-            { name: "The Emperor", imageUrl: "https://via.placeholder.com/150x250?text=The+Emperor", explanation: "Authority, establishment, structure." },
-            { name: "The Hierophant", imageUrl: "https://via.placeholder.com/150x250?text=The+Hierophant", explanation: "Spiritual wisdom, tradition, conformity." },
-            { name: "The Lovers", imageUrl: "https://via.placeholder.com/150x250?text=The+Lovers", explanation: "Love, harmony, partnerships, choices." },
-            { name: "The Chariot", imageUrl: "https://via.placeholder.com/150x250?text=The+Chariot", explanation: "Control, willpower, success, action." },
-            { name: "Strength", imageUrl: "https://via.placeholder.com/150x250?text=Strength", explanation: "Courage, persuasion, influence, compassion." },
-            { name: "The Hermit", imageUrl: "https://via.placeholder.com/150x250?text=The+Hermit", explanation: "Soul-searching, introspection, inner guidance." },
-            { name: "Wheel of Fortune", imageUrl: "https://via.placeholder.com/150x250?text=Wheel+of+Fortune", explanation: "Good luck, karma, life cycles, destiny." },
-            { name: "Justice", imageUrl: "https://via.placeholder.com/150x250?text=Justice", explanation: "Fairness, truth, law, cause and effect." },
-            { name: "The Hanged Man", imageUrl: "https://via.placeholder.com/150x250?text=The+Hanged+Man", explanation: "Pause, surrender, new perspective." },
-            { name: "Death", imageUrl: "https://via.placeholder.com/150x250?text=Death", explanation: "Endings, change, transformation, transition." },
-            { name: "Temperance", imageUrl: "https://via.placeholder.com/150x250?text=Temperance", explanation: "Balance, moderation, patience, harmony." },
-            { name: "The Devil", imageUrl: "https://via.placeholder.com/150x250?text=The+Devil", explanation: "Shadow self, attachment, addiction, restriction." },
-            { name: "The Tower", imageUrl: "https://via.placeholder.com/150x250?text=The+Tower", explanation: "Sudden change, upheaval, chaos, revelation." },
-            { name: "The Star", imageUrl: "https://via.placeholder.com/150x250?text=The+Star", explanation: "Hope, faith, purpose, renewal, spirituality." },
-            { name: "The Moon", imageUrl: "https://via.placeholder.com/150x250?text=The+Moon", explanation: "Illusion, fear, anxiety, subconscious." },
-            { name: "The Sun", imageUrl: "https://via.placeholder.com/150x250?text=The+Sun", explanation: "Positivity, fun, warmth, success, vitality." },
-            { name: "Judgement", imageUrl: "https://via.placeholder.com/150x250?text=Judgement", explanation: "Reflection, reckoning, inner calling." },
-            { name: "The World", imageUrl: "https://via.placeholder.com/150x250?text=The+World", explanation: "Completion, integration, accomplishment, travel." }
+            { name: "The Fool", imageUrl: "./imgg/0.png", explanation: "A new beginning, spontaneity, a free spirit." },
+            { name: "The Magician", imageUrl: "./imgg/1.png", explanation: "Power, resourcefulness, inspired action." },
+            { name: "The High Priestess", imageUrl: "./imgg/2.png", explanation: "Intuition, sacred knowledge, divine feminine." },
+            { name: "The Empress", imageUrl: "./imgg/3.png", explanation: "Fertility, femininity, beauty, nature." },
+            { name: "The Emperor", imageUrl: "./imgg/4.png", explanation: "Authority, establishment, structure." },
+            { name: "The Hierophant", imageUrl: "./imgg/5.png", explanation: "Spiritual wisdom, tradition, conformity." },
+            { name: "The Lovers", imageUrl: "./imgg/6.png", explanation: "Love, harmony, partnerships, choices." },
+            { name: "The Chariot", imageUrl: "./imgg/7.png", explanation: "Control, willpower, success, action." },
+            { name: "Strength", imageUrl: "./imgg/8.png", explanation: "Courage, persuasion, influence, compassion." },
+            { name: "The Hermit", imageUrl: "./imgg/9.png", explanation: "Soul-searching, introspection, inner guidance." },
+            { name: "Wheel of Fortune", imageUrl: "./imgg/10.png", explanation: "Good luck, karma, life cycles, destiny." },
+            { name: "Justice", imageUrl: "./imgg/11.png", explanation: "Fairness, truth, law, cause and effect." },
+            { name: "The Hanged Man", imageUrl: "./imgg/12.png", explanation: "Pause, surrender, new perspective." },
+            { name: "Death", imageUrl: "./imgg/13.png", explanation: "Endings, change, transformation, transition." },
+            { name: "Temperance", imageUrl: "./imgg/14.png", explanation: "Balance, moderation, patience, harmony." },
+            { name: "The Devil", imageUrl: "./imgg/15.png", explanation: "Shadow self, attachment, addiction, restriction." },
+            { name: "The Tower", imageUrl: "./imgg/16.png", explanation: "Sudden change, upheaval, chaos, revelation." },
+            { name: "The Star", imageUrl: "./imgg/17.png", explanation: "Hope, faith, purpose, renewal, spirituality." },
+            { name: "The Moon", imageUrl: "./imgg/18.png", explanation: "Illusion, fear, anxiety, subconscious." },
+            { name: "The Sun", imageUrl: "./imgg/19.png", explanation: "Positivity, fun, warmth, success, vitality." },
+            { name: "Judgement", imageUrl: "./imgg/20.png", explanation: "Reflection, reckoning, inner calling." },
+            { name: "The World", imageUrl: "./imgg/21.png", explanation: "Completion, integration, accomplishment, travel." }
         ];
 
         function selectSpread(type) {
@@ -428,7 +419,6 @@
 
             const selectedCards = shuffleArray(majorArcana.slice()).slice(0, numberOfCards);
             
-            // 渲染卡牌
             for (let i = 0; i < numberOfCards; i++) {
                 setTimeout(() => {
                     const card = createCard(i, selectedCards[i]);
@@ -437,7 +427,6 @@
                 }, i * 200);
             }
 
-            // 等待卡片渲染结束后显示综合解释
             setTimeout(() => {
                 displayCombinedExplanation(selectedCards);
             }, numberOfCards * 220);
@@ -457,9 +446,15 @@
                         <div class="card-position">${positions[index] || 'Position ' + (index + 1)}</div>
                         <img class="card-img" src="${cardData.imageUrl}" alt="${cardData.name}">
                     </div>
-                    <div class="card-explanation">${cardData.explanation}</div>
                 </div>
             `;
+
+            // 随机逆位
+            if (Math.random() < 0.5) {
+                // 50%概率逆位
+                const img = card.querySelector('.card-img');
+                img.style.transform = 'rotate(180deg)';
+            }
 
             card.addEventListener('click', function() {
                 if (!this.classList.contains('flipped')) {
@@ -500,7 +495,6 @@
             combinedDiv.innerHTML = `<p>${combinedText}</p><p><strong>${summary}</strong></p>`;
         }
 
-        // 点击模态框外部关闭
         window.onclick = function(event) {
             if (event.target.className === 'modal') {
                 event.target.style.display = 'none';
