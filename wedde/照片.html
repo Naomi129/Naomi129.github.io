@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* 照片之间的间距 */
+        }
+
+        .photo {
+            text-align: center;
+        }
+
+        .photo img {
+            width: 300px; /* 你可以根据需要调整宽度 */
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .photo p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <div class="photo">
+            <img src="img/t1.png" alt="Fashion Women's Slippers">
+            <p>Fashion Women's Slippers</p>
+        </div>
+        <div class="photo">
+            <img src="img/in2.png" alt="Handwoven Beach Slippers">
+            <p>Handwoven Beach Slippers</p>
+        </div>
+        <div class="photo">
+            <img src="img/in3.png" alt="Leather High-Heeled Slippers">
+            <p>Leather High-Heeled Slippers</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tarot Reading</title>
+    <style>
+        :root {
+            --primary-bg: #1a1a2e;
+            --secondary-bg: #212140;
+            --accent-color: #e2c87a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #8e8eb2;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            color: var(--accent-color);
+            font-size: 2em;
+            margin: 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(226, 200, 122, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        .spread-options {
+            text-align: center;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .spread-choice {
+            background: rgba(226, 200, 122, 0.1);
+            border: 1px solid transparent;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .spread-choice:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .spread-choice.selected {
+            background: rgba(226, 200, 122, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .button-group {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .primary-button {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            border: none;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(226, 200, 122, 0.3);
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .secondary-button:hover {
+            background: rgba(226, 200, 122, 0.1);
+        }
+
+        .cards-area {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            min-height: 300px;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 160px;
+            height: 280px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+            animation: cardAppear 0.5s ease-out backwards;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            border: 2px solid var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 15px;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: var(--accent-color);
+            font-size: 2em;
+            justify-content: center;
+        }
+
+        .card-front {
+            background: var(--secondary-bg);
+            transform: rotateY(180deg);
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .card-title {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .card-position {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .card-img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-explanation {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.9em;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--secondary-bg);
+            margin: 5% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            color: var(--text-primary);
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+
+        .spread-info {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        #manual-spread-selection {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .spread-image {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+        }
+
+        /* 调整合并解释的间距 */
+        .combined-explanation {
+            margin-top: 60px;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">✧ Tarot Reading ✧</h1>
+        </div>
+
+        <textarea placeholder="Please describe your question..."></textarea>
+        
+        <div class="spread-options">
+            <div class="spread-choice" onclick="selectSpread('auto')">Let the Tarot choose a spread for me</div>
+            <div class="spread-choice" onclick="selectSpread('manual')">I want to choose a spread myself</div>
+        </div>
+
+        <div id="manual-spread-selection">
+            <div class="spread-options">
+                <div class="spread-choice" onclick="setSpread('three')">Three-Card Spread</div>
+                <div class="spread-choice" onclick="setSpread('cross')">Crossroads Spread</div>
+                <div class="spread-choice" onclick="setSpread('celtic')">Celtic Cross Spread</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="secondary-button" onclick="showSpreadInfo()">Show Spread Info</button>
+            <button class="primary-button" onclick="startReading()">Start Reading</button>
+        </div>
+
+        <div class="cards-area"></div>
+
+        <!-- 用于显示整合后的解释文字 -->
+        <div id="combinedExplanation" class="combined-explanation" style="display:none;"></div>
+    </div>
+
+    <div id="spreadInfoModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal()">&times;</button>
+            <h2 style="color: var(--accent-color)">Spread Information</h2>
+            
+            <div class="spread-info">
+                <h3 style="color: var(--accent-color)">Three-Card Spread</h3>
+                <p>This is a basic and practical spread that examines your question through three time dimensions:</p>
+                <ul>
+                    <li>Card 1: Represents the past influence</li>
+                    <li>Card 2: Reflects the current situation</li>
+                    <li>Card 3: Predicts the future development</li>
+                </ul>
+                <p style="color: var(--text-secondary)">Suitable for: Daily inquiries, simple questions, timeline analysis</p>
+                <img class="spread-image" src="https://via.placeholder.com/400x200?text=Three-Card+Spread" alt="Three-Card Spread Example">
+            </div>
+
+            <div class="spread-info">
+                <h3 style="color: var(--accent-color)">Crossroads Spread</h3>
+                <p>This spread is designed for decision-making and choices. It contains four positions:</p>
+                <ul>
+                    <li>Center: Your current situation</li>
+                    <li>Left: The first option/choice</li>
+                    <li>Right: The second option/choice</li>
+                    <li>Bottom: The potential outcome</li>
+                </ul>
+                <p style="color: var(--text-secondary)">Suitable for: Facing a choice, decision analysis, comparing pros and cons</p>
+                <img class="spread-image" src="https://via.placeholder.com/400x200?text=Crossroads+Spread" alt="Crossroads Spread Example">
+            </div>
+
+            <div class="spread-info">
+                <h3 style="color: var(--accent-color)">Celtic Cross Spread</h3>
+                <p>The most comprehensive and in-depth spread. It uses ten positions to provide a detailed analysis:</p>
+                <ul>
+                    <li>Center: The core issue</li>
+                    <li>Cross: The immediate challenge</li>
+                    <li>Base: The past foundation</li>
+                    <li>Influences: Surrounding influences</li>
+                    <li>Goal: The desired outcome</li>
+                    <li>Future: Potential developments</li>
+                </ul>
+                <p style="color: var(--text-secondary)">Suitable for: Complex issues, deep analysis, comprehensive understanding</p>
+                <img class="spread-image" src="https://via.placeholder.com/400x200?text=Celtic+Cross+Spread" alt="Celtic Cross Spread Example">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedSpreadType = 'auto';
+        let currentSpread = 'three';
+
+        const majorArcana = [
+            { name: "The Fool", imageUrl: "https://via.placeholder.com/150x250?text=The+Fool", explanation: "A new beginning, spontaneity, a free spirit." },
+            { name: "The Magician", imageUrl: "https://via.placeholder.com/150x250?text=The+Magician", explanation: "Power, resourcefulness, inspired action." },
+            { name: "The High Priestess", imageUrl: "https://via.placeholder.com/150x250?text=The+High+Priestess", explanation: "Intuition, sacred knowledge, divine feminine." },
+            { name: "The Empress", imageUrl: "https://via.placeholder.com/150x250?text=The+Empress", explanation: "Fertility, femininity, beauty, nature." },
+            { name: "The Emperor", imageUrl: "https://via.placeholder.com/150x250?text=The+Emperor", explanation: "Authority, establishment, structure." },
+            { name: "The Hierophant", imageUrl: "https://via.placeholder.com/150x250?text=The+Hierophant", explanation: "Spiritual wisdom, tradition, conformity." },
+            { name: "The Lovers", imageUrl: "https://via.placeholder.com/150x250?text=The+Lovers", explanation: "Love, harmony, partnerships, choices." },
+            { name: "The Chariot", imageUrl: "https://via.placeholder.com/150x250?text=The+Chariot", explanation: "Control, willpower, success, action." },
+            { name: "Strength", imageUrl: "https://via.placeholder.com/150x250?text=Strength", explanation: "Courage, persuasion, influence, compassion." },
+            { name: "The Hermit", imageUrl: "https://via.placeholder.com/150x250?text=The+Hermit", explanation: "Soul-searching, introspection, inner guidance." },
+            { name: "Wheel of Fortune", imageUrl: "https://via.placeholder.com/150x250?text=Wheel+of+Fortune", explanation: "Good luck, karma, life cycles, destiny." },
+            { name: "Justice", imageUrl: "https://via.placeholder.com/150x250?text=Justice", explanation: "Fairness, truth, law, cause and effect." },
+            { name: "The Hanged Man", imageUrl: "https://via.placeholder.com/150x250?text=The+Hanged+Man", explanation: "Pause, surrender, new perspective." },
+            { name: "Death", imageUrl: "https://via.placeholder.com/150x250?text=Death", explanation: "Endings, change, transformation, transition." },
+            { name: "Temperance", imageUrl: "https://via.placeholder.com/150x250?text=Temperance", explanation: "Balance, moderation, patience, harmony." },
+            { name: "The Devil", imageUrl: "https://via.placeholder.com/150x250?text=The+Devil", explanation: "Shadow self, attachment, addiction, restriction." },
+            { name: "The Tower", imageUrl: "https://via.placeholder.com/150x250?text=The+Tower", explanation: "Sudden change, upheaval, chaos, revelation." },
+            { name: "The Star", imageUrl: "https://via.placeholder.com/150x250?text=The+Star", explanation: "Hope, faith, purpose, renewal, spirituality." },
+            { name: "The Moon", imageUrl: "https://via.placeholder.com/150x250?text=The+Moon", explanation: "Illusion, fear, anxiety, subconscious." },
+            { name: "The Sun", imageUrl: "https://via.placeholder.com/150x250?text=The+Sun", explanation: "Positivity, fun, warmth, success, vitality." },
+            { name: "Judgement", imageUrl: "https://via.placeholder.com/150x250?text=Judgement", explanation: "Reflection, reckoning, inner calling." },
+            { name: "The World", imageUrl: "https://via.placeholder.com/150x250?text=The+World", explanation: "Completion, integration, accomplishment, travel." }
+        ];
+
+        function selectSpread(type) {
+            selectedSpreadType = type;
+            document.querySelectorAll('.spread-options .spread-choice').forEach(choice => {
+                choice.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+
+            const manualSelection = document.getElementById('manual-spread-selection');
+            manualSelection.style.display = type === 'manual' ? 'block' : 'none';
+        }
+
+        function setSpread(spread) {
+            currentSpread = spread;
+            document.querySelectorAll('#manual-spread-selection .spread-choice').forEach(choice => {
+                choice.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+        }
+
+        function showSpreadInfo() {
+            document.getElementById('spreadInfoModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('spreadInfoModal').style.display = 'none';
+        }
+
+        function startReading() {
+            const question = document.querySelector('textarea').value;
+            if (!question) {
+                alert('Please enter your question.');
+                return;
+            }
+
+            const cardsArea = document.querySelector('.cards-area');
+            cardsArea.innerHTML = '';
+
+            let numberOfCards = 3;
+            if (selectedSpreadType === 'manual') {
+                if (currentSpread === 'cross') numberOfCards = 4;
+                if (currentSpread === 'celtic') numberOfCards = 10;
+            }
+
+            const selectedCards = shuffleArray(majorArcana.slice()).slice(0, numberOfCards);
+            
+            // 渲染卡牌
+            for (let i = 0; i < numberOfCards; i++) {
+                setTimeout(() => {
+                    const card = createCard(i, selectedCards[i]);
+                    card.style.animationDelay = `${i * 0.2}s`;
+                    cardsArea.appendChild(card);
+                }, i * 200);
+            }
+
+            // 等待卡片渲染结束后显示综合解释
+            setTimeout(() => {
+                displayCombinedExplanation(selectedCards);
+            }, numberOfCards * 220);
+        }
+
+        function createCard(index, cardData) {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const positions = getPositions();
+
+            card.innerHTML = `
+                <div class="card-face card-back">✧</div>
+                <div class="card-face card-front">
+                    <div class="card-content">
+                        <div class="card-title">${cardData.name}</div>
+                        <div class="card-position">${positions[index] || 'Position ' + (index + 1)}</div>
+                        <img class="card-img" src="${cardData.imageUrl}" alt="${cardData.name}">
+                    </div>
+                    <div class="card-explanation">${cardData.explanation}</div>
+                </div>
+            `;
+
+            card.addEventListener('click', function() {
+                if (!this.classList.contains('flipped')) {
+                    this.classList.add('flipped');
+                }
+            });
+
+            return card;
+        }
+
+        function getPositions() {
+            if (currentSpread === 'cross') {
+                return ['Current Situation', 'Option One', 'Option Two', 'Outcome'];
+            } else if (currentSpread === 'celtic') {
+                return ['Core Issue', 'Challenge', 'Past', 'Future', 'Conscious', 'Subconscious', 'Advice', 'External', 'Hopes', 'Outcome'];
+            }
+            return ['Past', 'Present', 'Future'];
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function displayCombinedExplanation(cards) {
+            const combinedDiv = document.getElementById('combinedExplanation');
+            combinedDiv.style.display = 'block';
+
+            // 将所有卡片解释整合成一段文字
+            const explanations = cards.map(c => c.explanation);
+            const combinedText = explanations.join(' ');
+
+            const summary = "Overall, these cards suggest that by understanding past influences, acknowledging current challenges, and moving forward with awareness, you can find greater clarity and harmony.";
+            
+            combinedDiv.innerHTML = `<p>${combinedText}</p><p><strong>${summary}</strong></p>`;
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
