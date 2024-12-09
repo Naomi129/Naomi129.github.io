@@ -18,6 +18,7 @@
             color: var(--text-primary);
             margin: 0;
             padding: 20px;
+            line-height: 1.5;
         }
 
         .container {
@@ -88,6 +89,7 @@
             cursor: pointer;
             color: var(--text-primary);
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .spread-choice:hover {
@@ -200,7 +202,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px; /* 调整间距 */
+            margin-top: 20px;
         }
 
         .card-title {
@@ -286,6 +288,63 @@
             background: rgba(255,255,255,0.05);
             padding: 20px;
             border-radius: 10px;
+        }
+
+        /* 响应式优化 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 1.6em;
+            }
+
+            .language-toggle {
+                font-size: 12px;
+                padding: 3px 8px;
+            }
+
+            textarea {
+                height: 80px;
+                font-size: 14px;
+            }
+
+            .spread-choice {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .cards-area {
+                gap: 10px;
+            }
+
+            .card {
+                width: 120px;
+                height: 210px;
+            }
+
+            .card-title {
+                font-size: 1em;
+            }
+
+            .card-position {
+                font-size: 0.8em;
+            }
+
+            .card-img {
+                padding: 3px;
+            }
+
+            .combined-explanation {
+                font-size: 14px;
+                line-height: 1.4;
+            }
         }
     </style>
 </head>
@@ -427,7 +486,7 @@
                 threeCardFuture: "第三张牌：预示未来的发展",
                 threeCardSuitable: "适合：日常咨询、简单问题、时间线解读",
                 crossTitle: "十字路口阵",
-                crossDesc: "用于决策和选择的牌阵，共有四个位置：",
+                crossDesc: "专用于决策与选择的牌阵，共有四个位置：",
                 crossCenter: "中心：当前的处境",
                 crossLeft: "左侧：第一个选择",
                 crossRight: "右侧：第二个选择",
@@ -590,7 +649,7 @@
                 <div class="card-face card-front">
                     <div class="card-content">
                         <div class="card-title">${cardData.name}</div>
-                        <div class="card-position">${positions[index] || 'Position ' + (index + 1)}</div>
+                        <div class="card-position">${positions[index] || (currentLang === 'en' ? 'Position ' + (index + 1) : '位置 ' + (index + 1))}</div>
                         <img class="card-img" src="${cardData.imageUrl}" alt="${cardData.name}">
                     </div>
                 </div>
